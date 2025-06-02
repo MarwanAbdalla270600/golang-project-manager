@@ -2,7 +2,7 @@ package user
 
 import "errors"
 
-func ValidateUser(user UserInput) error {
+func validateUser(user *UserInput) error {
 	if user.Username == "" {
 		return errors.New("username is required")
 	}
