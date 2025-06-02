@@ -8,8 +8,7 @@ const (
 	RoleMember  UserRole = "MEMBER"
 )
 
-type PublicUser struct {
-	ID        uint     `json:"id"`
+type UserOutput struct {
 	Username  string   `json:"username"`
 	Firstname string   `json:"firstname"`
 	Lastname  string   `json:"lastname"`
@@ -21,4 +20,11 @@ type LoginUser struct {
 	Username string   `json:"username"`
 	Password string   `json:"password"`
 	Role     UserRole `json:"role"`
+}
+
+type UserInput struct {
+	Username  string `json:"username"`
+	Password  string `json:"password"`
+	Firstname string `json:"firstname,omitempty"`
+	Lastname  string `json:"lastname,omitempty"`
 }
