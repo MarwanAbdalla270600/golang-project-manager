@@ -4,14 +4,10 @@
 
 package db
 
-import (
-	"database/sql"
-)
-
 type User struct {
 	ID        int32
 	Username  string
 	Password  string
-	Firstname sql.NullString
-	Lastname  sql.NullString
+	Firstname string
+	Lastname  string
 }

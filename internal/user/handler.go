@@ -15,13 +15,14 @@ func NewUserHandler(UserService *UserService) *UserHandler {
 }
 
 func (h *UserHandler) HandleCreateUser(c echo.Context) error {
-	var userInput *UserInput
+	ctx := c.Request().Context()
+	var userInput UserInput
 
-	if err := c.Bind(userInput); err != nil {
+	if err := c.Bind(&userInput); err != nil {
 		return c.JSON(http.StatusBadGateway, echo.Map{"error": "Invalid Request"})
 	}
 
-	userOutput, err := h.UserService.CreateUser(userInput)
+	userOutput, err := h.UserService.CreateUser(ctx, &userInput)
 	if err != nil {
 		return c.JSON(http.StatusBadGateway, echo.Map{"error": "Invalid Request"})
 	}
